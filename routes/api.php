@@ -15,9 +15,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware("auth:sanctum", "api")->group(function () {
-    Route::post("/login", [ UserController::class, "Login" ]);
+Route::middleware(["auth:sanctum", "api"])->group(function () {
 });
 
-Route::middleware('auth:sanctum', 'api')->get('/user', function (Request $request) {
+Route::middleware("api")->group(function () {
+    Route::post("/login", [ UserController::class, "Login" ]);
 });

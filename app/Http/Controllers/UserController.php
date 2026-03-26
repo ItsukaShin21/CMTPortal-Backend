@@ -15,10 +15,14 @@ class UserController extends Controller
 
         if (Auth::attempt($data)) {
             $user = Auth::user();
-            $token = $user->user()->createToken();
+            $token = $user->createToken("Personal Access Token");
 
-            return response([ "token" => $token->plainTextToken,
-                              "status" => "success"]);
+            return response()->json([ "token" => $token->plainTextToken,
+                                      "status" => "success"]);
         }
+
+        return response()->json([
+            "error" => "Login failed"
+        ]);
     }
 }
