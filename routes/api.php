@@ -20,4 +20,6 @@ Route::middleware(["auth:sanctum", "api"])->group(function () {
 
 Route::middleware("api")->group(function () {
     Route::post("/login", [ UserController::class, "Login" ]);
+    Route::post("/register-user", [ UserController::class, "Register" ]);
+
 });
